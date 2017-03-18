@@ -31,6 +31,11 @@ angular
         controller: 'ListadoCtrl',
         controllerAs: 'listado'
       })
+      .when('/registro', {
+        templateUrl: 'views/registro.html',
+        controller: 'RegistroCtrl',
+        controllerAs: 'registro'
+      })
       .otherwise({
         redirectTo: '/'
       });

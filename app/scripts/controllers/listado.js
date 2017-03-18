@@ -9,8 +9,18 @@
  */
 angular.module('miappApp')
   .controller('ListadoCtrl', 
-  	function ($scope, UserService) {
+  	function ($scope, UserService, OrganizationService) {
     
+  		OrganizationService.listado()
+  			.then(function(response){
+  				console.log(response);
+  				if(response.data.status == 1){
+  					$scope.empresas = response.data.data;
+  				}else{
+  					console.log('error', response.data.error);
+  				}
+  			});
+
   		UserService.listado()
   			.then(function(response){
   				$scope.usuarios = response.data.data;

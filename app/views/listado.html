@@ -1,20 +1,36 @@
 <h1>Listao de usuarios</h1>
 
+
+<div>Buscar</div>
+ <select class="form-control" 
+           ng-model="buscar.empresa._id" 
+			ng-options="item._id as item.razsoc for item in empresas"
+           required>
+           	<option value="">Seleccione</option>
+           </select>
+
+
 <table class="table">
 	<thead>
 		<tr>
-			<td>Usuario</td>
+			<td></td>
 			<td>Nombre</td>
 			<td>Apellido</td>
+			<td>Edad</td>
+			<td>Género</td>
+			<td>Empresa</td>
 			<td>Creado</td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="usuario in usuarios">
-			<td>{{usuario.user}}</td>
-			<td>{{usuario.firstname}}</td>
-			<td>{{usuario.lastname}}</td>
-			<td>{{usuario.created}}</td>
+		<tr ng-repeat="usuario in usuarios | filter:buscar">
+			<td>{{$index + 1}}</td>
+			<td>{{usuario.nombre}}</td>
+			<td>{{usuario.apellido}}</td>
+			<td>{{usuario.edad}}</td>
+			<td>{{usuario.genero}}</td>
+			<td>{{usuario.empresa.razsoc}}</td>
+			<td>{{usuario.creado}}</td>
 		</tr>
 	</tbody>
 </table>
