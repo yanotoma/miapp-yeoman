@@ -25,14 +25,14 @@ angular.module('miappApp')
     function listado(){
     	var deferred = $q.defer();
 
-    	/*var token = $cookies.get('token');
+    	var token = $cookies.get('token');
     	var config = {
     		headers:{
     			'Authorization': 'JWT ' + token,
     		}
-    	}*/
+    	}
 
-    	$http.get(Config.BASE + Config.USERS) //config
+    	$http.get(Config.BASE + Config.USERS, config) //config
     		.then(function(response){
     			deferred.resolve(response);
     		});
